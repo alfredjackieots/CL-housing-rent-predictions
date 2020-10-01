@@ -77,8 +77,8 @@ def get_page_listings(page):
         page_results.append(listing)
         post_counter += 1
         
-    print("Scrape Complete!")
-    print("Number of Postings Scraped: {}".format(post_counter))        
+    print("Listing page scrape complete!")
+    print("Number of postings scraped: {}".format(post_counter))        
     return page_results    
 
 
@@ -97,3 +97,138 @@ def clpage_to_df(soup):
     df = pd.DataFrame(data, columns=headers)
     
     return df
+
+
+def get_post_amenities(url_list):
+    '''
+    Function to scrape a list of Craigslist URLs for # bathrooms & list of amenities. 
+    
+    Input:  List of urls to scrape   
+    Output: (1) List of bathroom counts from scraped urls (bathrooms_list)
+            (2) List of amenities lists from scraped urls (amenities_list)
+    '''
+    
+    bathrooms_list = []
+    amenities_list = []
+    
+    index = 0
+    
+    for url in url_list:
+        
+        response = requests.get(url)
+        page = response.text
+        soup = BeautifulSoup(page, 'html.parser')
+        
+        # Each post has 3 possible groupings: 
+        # -- Group 1: Bathroom information (+ BRs, sqft, availability date)
+        # -- Group 2: Open House dates
+        # -- Group 3: List of amenities
+        
+        # None are required fields, so each post can be different
+        
+        # Test how many groups there are: 
+        
+        # If > 1 group: 
+        if len(soup.find_all('p', class_='attrgroup')) > 1:
+            
+            group1 = soup.find_all('p', class_='attrgroup')[0].text.split('\n')
+            item_list1 = [item for item in group1 if item != '']
+            
+            # Check to see if first grouping contains number of bathrooms
+            
+            if item_list1[0][-2:] == 'Ba':
+                brba = item_list1[0].split(' / ')
+                bath = brba[-1]
+            
+            # if not bathrooms, then NaN and move on
+            else:
+                bath = np.nan
+    
+            # Grouping 2 will be either open house dates or amenities:
+        
+            # If only 2 groups, then return amenities
+            # If there are 3 groups, skip group 2 (Open House dates) and return amenities
+            
+            if len(soup.find_all('p', class_='attrgroup')) == 2:
+            
+                group2 = soup.find_all('p', class_='attrgroup')[1].text.split('\n')
+                amenities = [item for item in group2 if item != '']
+                
+            else:
+                group2 = soup.find_all('p', class_='attrgroup')[2].text.split('\n')
+                amenities = [item for item in group2 if item != '']         
+        
+        # If only 1 group 
+        
+        elif len(soup.find_all('p', class_='attrgroup')) == 1:
+            
+            items = soup.find_all('p', class_='attrgroup')[0].text.split('\n')
+            item_list = [item for item in group1 if item != '']
+            
+            # Check to see if that group contains number of bathrooms
+            if item_list[0][-2:] == 'Ba':
+                brba = item_list1[0].split(' / ')
+                bath = brba[-1]
+            
+            # otherwise, we just have amenities
+            else:
+                amenities = item_list
+        
+        # If no details on post page, fill with NaN
+        else:
+            bath = np.nan
+            amenities = np.nan
+  
+        # Append bathroom count and amenities to lists:
+        bathrooms_list.append(bath)
+        amenities_list.append(amenities)
+        
+        # For Testing Purposes -- remove later:
+        #print("Index: ", index)      
+        #print("Baths: ", bath)
+        #print("Amens: ", amenities)
+        #print("")
+        
+        index += 1
+        
+    print("Individual posts scrape complete!")
+    print("Number of posts scraped: ", index)        
+    
+    return bathrooms_list, amenities_list
+
+
+def full_page_scrape(url):
+    '''
+    Function to scrape Craigslist page of listings, and then scrape each post
+    within that page for number of bathrooms and amenities. 
+    
+    Calls on `get_post_amenities()` function for second-level scrape
+    
+    Input:   url of Craigslist apt/housing rental listings
+    Output:  DataFrame of listings
+    '''
+     
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        page = response.text
+
+        # Create soup object from URL
+        soup = BeautifulSoup(page, 'html.parser')
+    
+        # Create DF
+        df = clpage_to_df(soup)
+        
+        # Scrape each listing URL for amenities: 
+        post_urls = list(df.link)
+        post_details = get_post_amenities(post_urls)
+        
+        # Add amenities to df
+        baths = post_details[0]
+        amenities = post_details[1]
+        
+        df['bath'] = baths
+        df['amenities'] = amenities
+        
+        return df
+
