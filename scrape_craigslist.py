@@ -12,6 +12,8 @@ import requests
 import numpy as np
 import pandas as pd
 
+from warnings import warn
+
 
 def get_listing_details(post):
     '''
@@ -69,6 +71,7 @@ def get_page_listings(page):
 
     (A full page of postings on CL contains 120 listings)
     '''
+    
     post_counter = 0
     page_results = []
     
@@ -210,25 +213,27 @@ def full_page_scrape(url):
      
     response = requests.get(url)
     
-    if response.status_code == 200:
-        page = response.text
+    if response.status_code != 200:
+        warn('Request: {}; Status code: {}'.format(requests, response.status_code))
+        
+    page = response.text
 
-        # Create soup object from URL
-        soup = BeautifulSoup(page, 'html.parser')
+    # Create soup object from URL
+    soup = BeautifulSoup(page, 'html.parser')
     
-        # Create DF
-        df = clpage_to_df(soup)
+    # Create DF
+    df = clpage_to_df(soup)
         
-        # Scrape each listing URL for amenities: 
-        post_urls = list(df.link)
-        post_details = get_post_amenities(post_urls)
+    # Scrape each listing URL for amenities: 
+    post_urls = list(df.link)
+    post_details = get_post_amenities(post_urls)
         
-        # Add amenities to df
-        baths = post_details[0]
-        amenities = post_details[1]
+    # Add amenities to df
+    baths = post_details[0]
+    amenities = post_details[1]
         
-        df['bath'] = baths
-        df['amenities'] = amenities
+    df['bath'] = baths
+    df['amenities'] = amenities
         
-        return df
+    return df
 
