@@ -1,12 +1,12 @@
 # To-do list: 
 
 ## Scraping: 
-- [ ] Set warning `if response.status != 200`
-- [ ] Use time/sleep to slow down requests
-- [ ] Figure out pagination, and use `pd.concat(dfs)` where `dfs` is a list of dfs
+- [x] Set warning `if response.status != 200`
+- [x] Use time/sleep to slow down requests
+- [x] Figure out pagination, and use `pd.concat(dfs)` where `dfs` is a list of dfs
 - [ ] Scrape all available pages
 - [ ] Scrape SFBay postings (bc location is a set field, plus I know it better): SF and selected East Bay areas
-- [ ] Export scrape to CSV
+- [ ] Export scrapes (2) to CSV
 
 ## Data Cleaning: 
 - [ ] Select East Bay neighborhoods
