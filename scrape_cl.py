@@ -6,7 +6,7 @@ Functions used to scrape Craigslist postings:
 * Second-level scrape into each listing page to get amenities: get_post_amenities(url_list)
 * Compile above functions to scrape listings page & individual post pages: full_page_scrape(url)
 * Get list of all possible results URLs based on total search results: get_results_urls(start_url)
-* Scrape full search results (all listing pages and individual post pages): full_listings_scrape(results_urls)
+* Scrape full search results (all listing pages and individual post pages): full_listings_scrape(start_url)
 '''
 
 # Imports
@@ -140,6 +140,9 @@ def get_post_amenities(url_list):
     index = 0
     
     for url in url_list:
+        
+        # Set sleep interval to slow down requests
+        sleep(randint(1,2))
         
         response = requests.get(url)
         page = response.text
@@ -300,7 +303,7 @@ def get_results_urls(start_url):
 #   Scrapes entire Craigslist search results - returns df  #
 ############################################################
 
-def full_listings_scrape(results_urls):
+def full_listings_scrape(start_url):
     '''
     Function to fully scrape Craigslist results of apartments/housing search. 
     
@@ -318,13 +321,15 @@ def full_listings_scrape(results_urls):
     df_list = []
     page_counter = 1
     
+    results_urls = get_results_urls(start_url)
+    
     total_pages = len(results_urls)
 
     for url in results_urls:
     
         response = requests.get(url)
         
-        # Set sleep timer to slow down requests
+        # Set sleep timer to avoid request overloads
         sleep(randint(2,4))
         
         # Status updates while scraping: 
