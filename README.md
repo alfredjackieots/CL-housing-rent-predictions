@@ -4,5 +4,5 @@
 
 ### Coming Soon:
 * Using BeautifulSoup to scrape Craigslist apartment/housing rental listings
-* Using linear regression modeling to predict monthly rent prices
+* Using regression modeling to predict monthly rent prices
 
