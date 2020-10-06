@@ -26,6 +26,10 @@ Your project README.md file should contain the following:
 - [ ] Possible impacts of your project
 - [ ] Slide Presentation (pdf)
 
+### Limitations
+* COVID - prices in flux (or free fall, depending on who you ask)
+* Areas with most vacancies may be those who can afford to move / work remote
+
 
 Sources & References: 
 * [SF Chronicle: Bay Area rents keep plumetting... (10/02/2020](https://www.sfchronicle.com/bayarea/article/Bay-Area-rents-keep-plummeting-especially-in-15613722.php)
