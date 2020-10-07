@@ -55,7 +55,7 @@ def model_eval_with_alphavec(rando_state_list, alphavec, X, y, model_type):
     for r_state in rando_state_list:
         
         # Split data
-        X, X_test, y, y_test = train_test_split(X, y, test_size=.2, random_state=r_state)
+        X, X_test, y, y_test = train_test_split(X, y, test_size=.3, random_state=r_state)
         
         # Scalilng features
         scaler = StandardScaler()
@@ -179,7 +179,7 @@ def model_eval_with_alpha(random_state_list, X, y, model_type, alpha=1):
     for r_state in random_state_list:
         
         # Data split into train/test
-        X, X_test, y, y_test = train_test_split(X, y, test_size=.2, random_state=r_state)
+        X, X_test, y, y_test = train_test_split(X, y, test_size=.3, random_state=r_state)
         
         # Scalilng features
         scaler = StandardScaler()
