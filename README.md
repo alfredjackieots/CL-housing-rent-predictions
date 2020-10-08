@@ -6,7 +6,7 @@
 * Scraped Oct, 2020 - 6:50pm
 * Listing date range: Sept 30 - Oct 1, 2020
 
-
+[Google Slides for Presentation](https://docs.google.com/presentation/d/1NhBDSsJ1JcOm26SGvjzqb9vzUKsGusGk8203bDzg8bY/edit#slide=id.g9baf0f3b3a_0_69)
 
 ### Project README
 Your project README.md file should contain the following:
