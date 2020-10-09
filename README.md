@@ -7,6 +7,8 @@ For this project, I scraped a little over 3,000 apartment/housing listings in SF
 
 If you're interested in adapting this to your own search for somewhere that isn't San Francisco, please feel to reach out and we can talk about how to adapt the code to suit your needs!
 
+---------
+
 ### Data Scraping and Cleaning
 * Scraped +3,000 apartment/housing posts on [Craigslist](https://sfbay.craigslist.org/) (including listings results pages and individual posts)
     * [Data scrape date: Oct 1, 2020 - 6:50pm](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/craigslist_scrape_sf.ipynb)
@@ -52,6 +54,8 @@ There are most certainly other factors influencing rent. For example, many apart
   * find information on security deposit and/or lease requirements
   * implement image processing tools to evaluate an apartment's quality from the post's photos
 * Scam post identification  
+
+-------------
 
 #### Tooling
 * General
