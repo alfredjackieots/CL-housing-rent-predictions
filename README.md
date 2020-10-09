@@ -1,17 +1,15 @@
 # Apartment Hunting on Craigslist
 ## Using linear regression to predict rental prices in San Francisco
 
-
-## :construction: UNDER CONSTRUCTION :construction:
+:construction: an introduction goes here :construction:
 
 ### Data Scraping and Cleaning
 * Scraped +3,000 apartment/housing posts on [Craigslist](https://sfbay.craigslist.org/) (including listings results pages and individual posts)
-    * [Data scrape date: Oct, 2020 - 6:50pm](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/craigslist_scrape_sf.ipynb)
+    * [Data scrape date: Oct 1, 2020 - 6:50pm](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/craigslist_scrape_sf.ipynb)
     * Listings date range: Sept 30 - Oct 1, 2020
 * After removing duplicates and rows with missing key values, 1,000 unique listings remained. The raw scraped data and cleaned data can be found in the [data_files](https://github.com/scrapfishies/CL-housing-rent-predictions/tree/master/data_files) folder. 
 
 ![Anatomy of a Craigslist Post](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/img/post_example.png?raw=true)
-
 
 ### Features and Target Variable
 * **Target varible: *monthly rental price***
@@ -20,8 +18,7 @@
   * number of bedrooms
   * number of bathrooms
   * location (per the [SF Realtor Association district map](https://data.sfgov.org/Geographic-Locations-and-Boundaries/Realtor-Neighborhoods/5gzd-g9ns))   
-  * amenities (parking situation, pets allowed, laundry facilities)
-  
+  * amenities (parking situation, pets allowed, laundry facilities)  
 
 ### Model Results and Evaluation
 Overal, the model does a reasonable job of predicting apartment rental prices based on these standardized listing features. The ~$400 price variation should be considered in relation to the apartment price, and an apartment hunter's tolerance will be subjective to their budget. For example, this swing could be substantial for one person's budget, but may be okay when splitting between multiple people. 
@@ -50,18 +47,18 @@ There are most certainly other factors influencing rent. For example, many apart
 
 #### Tooling
 * General
-  * Python
-  * Pandas
-  * Numpy
+  * `Python`, `Jupyter Notebooks`
+  * `Pandas`
+  * `Numpy`
 * [Web scraping](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/scrape_cl.py)
-  * requests
-  * BeautifulSoup
+  * `requests`
+  * `BeautifulSoup`
 * [Modeling](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/linear_regression_model.ipynb)
-  * sklearn
-  * statsmodels
+  * `sklearn`
+  * `statsmodels`
 * [Visualizations](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/eda_charts.ipynb)
-  * Seaborn
-  * Matplotlib
+  * `Seaborn`
+  * `Matplotlib`
 
 #### Sources & References: 
 * [San Francisco Association of Realtors](https://my.sfrealtors.com/)
