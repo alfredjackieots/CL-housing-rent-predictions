@@ -20,8 +20,10 @@
   * location (per the [SF Realtor Association district map](https://data.sfgov.org/Geographic-Locations-and-Boundaries/Realtor-Neighborhoods/5gzd-g9ns))   
   * amenities (parking situation, pets allowed, laundry facilities)  
 
-### Model Results and Evaluation
-Overal, the model does a reasonable job of predicting apartment rental prices based on these standardized listing features. The ~$400 price variation should be considered in relation to the apartment price, and an apartment hunter's tolerance will be subjective to their budget. For example, this swing could be substantial for one person's budget, but may be okay when splitting between multiple people. 
+### Model: Build, Results, and Evaluation
+:construction: model selection & details :construction:
+
+Overall, the model does a reasonable job of predicting apartment rental prices based on these standardized listing features. The ~$400 price variation should be considered in relation to the apartment price, and an apartment hunter's tolerance will be subjective to their budget. For example, this swing could be substantial for one person's budget, but may be okay when splitting between multiple people. 
 
 The model does best when predicting prices for units in the $2,500 to $4,000 / month range, which represents the majority of listings in the sample.
 
