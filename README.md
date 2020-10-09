@@ -1,7 +1,11 @@
 # Apartment Hunting on Craigslist
 ## Using linear regression to predict rental prices in San Francisco
 
-:construction: an introduction goes here :construction:
+Hunting for an apartment can be painful -- its competitive nature means seekers need to be ready to act immediately to secure a lease. Speed comes at the expense of careful evaluation, which can give seekers assurance that what they're commiting to is a fair deal. And so with this in mind, I wanted to create a predictive model that would help renters like myself better and more quickly assess their options. 
+
+For this project, I scraped a little over 3,000 apartment/housing listings in SF on Craigslist and used linear regression to attempt to predict rental prices based on a set of standard features available on most postings. 
+
+If you're interested in adapting this to your own search for somewhere that isn't San Francisco, please feel to reach out and we can talk about how to adapt the code to suit your needs!
 
 ### Data Scraping and Cleaning
 * Scraped +3,000 apartment/housing posts on [Craigslist](https://sfbay.craigslist.org/) (including listings results pages and individual posts)
@@ -21,13 +25,15 @@
   * amenities (parking situation, pets allowed, laundry facilities)  
 
 ### Model: Build, Results, and Evaluation
-:construction: model selection & details :construction:
+After cleaning the data and exploring the individual features' relationships to price, I used `sklearn`'s `PolynomialFeatures` (degree=2) to create interactions between the variables and then compared the results of `Lasso` and `Ridge` regularization, which reduced the model's complexity and helped identify the most meaningful features. The `Ridge` model stood out as the clear winner due to it's consistency between training and validation scores on R-squared and root mean squared error (RMSE). 
+
+The fully trained model's predictions compared with the test data are plotted below: 
+
+![Predicted versus Actual](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/img/ridge_actual_predicted.png?raw=true)
 
 Overall, the model does a reasonable job of predicting apartment rental prices based on these standardized listing features. The ~$400 price variation should be considered in relation to the apartment price, and an apartment hunter's tolerance will be subjective to their budget. For example, this swing could be substantial for one person's budget, but may be okay when splitting between multiple people. 
 
 The model does best when predicting prices for units in the $2,500 to $4,000 / month range, which represents the majority of listings in the sample.
-
-![Predicted versus Actual](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/img/ridge_actual_predicted.png?raw=true)
 
 There are most certainly other factors influencing rent. For example, many apartments in San Francisco are subject to rent control, which can impact a new listing's price. There may also be other amenities offered that aren't standard fields in Craigslist (e.g. fitness facilities, common spaces). Lastly, there may be other environmental or economic factors at play -- San Francisco is currently seeing an unprecedented drop in rental prices as many people have left the city during COVID. The sample may not be a typical representation of available housing compared to pre-pandemic times, as those vacancies may be attributed to former residents who have the means to move out of the city and work remotely. 
 
