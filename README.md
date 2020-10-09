@@ -10,6 +10,9 @@
     * Listings date range: Sept 30 - Oct 1, 2020
 * After removing duplicates and rows with missing key values, 1,000 unique listings remained. The raw scraped data and cleaned data can be found in the [data_files](https://github.com/scrapfishies/CL-housing-rent-predictions/tree/master/data_files) folder. 
 
+![Anatomy of a Craigslist Post](https://github.com/scrapfishies/CL-housing-rent-predictions/blob/master/img/post_example.png?raw=true)
+
+
 ### Features and Target Variable
 * **Target varible: *monthly rental price***
 * Features
