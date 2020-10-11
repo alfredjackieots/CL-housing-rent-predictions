@@ -314,7 +314,7 @@ def full_listings_scrape(start_url):
              (5) Moves to next URL in results_urls, repeat setps 2-4 until all pages scraped
              (6) Compiles list of dfs into single dataframe
     
-    Input:   results_urls
+    Input:   start_urls
     Output:  dataframe of entire search results
     '''
     
