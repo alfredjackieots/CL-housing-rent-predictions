@@ -1,11 +1,13 @@
 # Apartment Hunting on Craigslist
 ## Using linear regression to predict rental prices in San Francisco
 
-Hunting for an apartment can be painful -- its competitive nature means seekers need to be ready to act immediately to secure a lease. Speed comes at the expense of careful evaluation, which can give seekers assurance that what they're commiting to is a fair deal. And so with this in mind, I wanted to create a predictive model that would help renters like myself better and more quickly assess their options. 
+Hunting for an apartment can be painful -- its competitive nature means seekers need to be ready to act immediately to secure a lease. Speed comes at the expense of careful evaluation, which can give seekers assurance that they're getting a fair deal. And so with this in mind, I wanted to create a predictive model that would help renters like myself better and more quickly assess their options. 
 
 For this project, I scraped a little over 3,000 apartment/housing listings in SF on Craigslist and used linear regression to attempt to predict rental prices based on a set of standard features available on most postings. 
 
-If you're interested in adapting this to your own search for somewhere that isn't San Francisco, please feel to reach out and we can talk about how to adapt the code to suit your needs!
+If you're interested in adapting this to your own search for somewhere that isn't San Francisco, please feel to reach out and we can talk about how to adapt the code to suit your needs.
+
+For a more in-depth explanation, please [check out my article on Medium](https://medium.com/@scrapfishies/how-to-find-good-apartment-deals-craigslist-f21967420059)!
 
 ---------
 
