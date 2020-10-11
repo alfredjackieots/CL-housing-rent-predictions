@@ -7,7 +7,7 @@ For this project, I scraped a little over 3,000 apartment/housing listings in SF
 
 If you're interested in adapting this to your own search for somewhere that isn't San Francisco, please feel to reach out and we can talk about how to adapt the code to suit your needs.
 
-For a more in-depth explanation, please [check out my article on Medium](https://medium.com/@scrapfishies/how-to-find-good-apartment-deals-craigslist-f21967420059)!
+For a more in-depth explanation, please [check out my article on Medium](https://medium.com/@scrapfishies/how-to-find-good-apartment-deals-craigslist-f21967420059).
 
 ---------
 
